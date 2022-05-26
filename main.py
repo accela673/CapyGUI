@@ -15,7 +15,12 @@ class CapybaraPhoto:
     def init(self):
         self.root.title('Capybara Photo Editor')
         self.root.bind("<Escape>", self.close)
+        
+        # you can change program icon here 
+        # just add to "resourses" folder png photo and change name in line bellow line(21)
         self.root.iconphoto(True, PhotoImage(file ="resourses/icon4.png"))
+        
+        
         self.image_tabs.enable_traversal()
     
     
