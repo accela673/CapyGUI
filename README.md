@@ -1,4 +1,5 @@
-# CapyGUI
+# Final exam project COM 21a
 
-Code with GUI "CapyPhoto"
+Code with GUI named "CapyPhoto"
+
 
