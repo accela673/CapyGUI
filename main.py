@@ -13,6 +13,8 @@ class CapybaraPhoto:
         self.init()
 
     def init(self):
+        
+        # you can change title name here (line 18)
         self.root.title('Capybara Photo Editor')
         self.root.bind("<Escape>", self.close)
         
