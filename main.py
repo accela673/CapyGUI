@@ -19,7 +19,7 @@ class CapybaraPhoto:
         self.root.bind("<Escape>", self.close)
         
         # you can change program icon here 
-        # just add to "resourses" folder png photo and change name in line bellow line(21)
+        # just add to "resourses" folder png photo and change name in line bellow (line21)
         self.root.iconphoto(True, PhotoImage(file ="resourses/icon4.png"))
         
         
