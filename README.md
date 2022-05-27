@@ -1,5 +1,8 @@
 # Final exam project COM 21a
 
+Please give a high rating (＠_＠;)
+
+
 Code with GUI named "CapyPhoto"
 Instructions to use program:
 1. download and unpack zip file
