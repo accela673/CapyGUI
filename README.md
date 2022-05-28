@@ -1,6 +1,6 @@
 # Final exam project COM 21a
 
-Сode with GUI that batch edits images in a folder
+Сode with GUI that batch edits all images in a folder
 
 
 
