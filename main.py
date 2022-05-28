@@ -11,6 +11,8 @@ count_bw = 1
 class CapybaraPhoto:
     def __init__(self):
         self.root = Tk()
+        self.label = Label(self.root, text="Choose a Button")
+        self.label.grid(row=0,column=0)
         self.image_tabs = Notebook(self.root)
         self.opened_images = []
         self.count_bw = 1
@@ -37,9 +39,9 @@ class CapybaraPhoto:
         rotate_right = Button(self.root, width=18, height=5, text="Rotate image right", command=self.rotate_right_command)
         rotate_left = Button(self.root, width=18, height=5, text="Rotate image left", command=self.rotate_left_command)
         upside = Button(self.root, width=18, height=5, text="Upside image", command=self.upside_command)
-        bw_filter.grid(row=0,column=0)
-        rotate_right.grid(row=0,column=2)
-        rotate_left.grid(row=0,column=3)
+        bw_filter.grid(row=1,column=0)
+        rotate_right.grid(row=1,column=2)
+        rotate_left.grid(row=1,column=3)
         upside.grid(row=2,column=0)
 
 
