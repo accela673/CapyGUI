@@ -1,106 +1,84 @@
 from tkinter import *
-from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from tkinter.ttk import Notebook
 from PIL import Image, ImageTk
 import os
 
+'''abs_path = os.path.abspath(__file__)
+path = abs_path[:-7] + f"bw_filter_{str(self.count_bw)}"'''
+
+count_bw = 1
 class CapybaraPhoto:
     def __init__(self):
         self.root = Tk()
         self.image_tabs = Notebook(self.root)
         self.opened_images = []
+        self.count_bw = 1
+        self.count_r = 1
+        self.count_l = 1
         self.init()
 
     def init(self):
+        self.root.geometry('400x400')
         
-        # you can change title name here (line 18)
+        # you can change title name here 
         self.root.title('Capybara Photo Editor')
         self.root.bind("<Escape>", self.close)
-        
-        # you can change program icon here 
-        # just add to "resourses" folder png photo and change name in line bellow (line21)
-        self.root.iconphoto(True, PhotoImage(file ="resourses/icon4.png"))
-        
-        
         self.image_tabs.enable_traversal()
     
-    
     def window(self):
-        self.draw_menu()
-        self.draw_widgets()
-        self.entry()
+        self.buttons()
         self.root.mainloop()
-    
-    def entry(self):
-        path = Entry(self.root)
-
-    def draw_menu(self):
-        menu_bar = Menu(self.root)
-        file_menu = Menu(menu_bar, tearoff=0)
-        file_menu.add_command(label = 'Select image or images', command = self.select_images)
-        file_menu.add_command(label = 'Save as', command = self.save_as)
-        file_menu.add_separator()
-        file_menu.add_command(label='Exit', command=self.close)
-        menu_bar.add_cascade(label = 'File', menu = file_menu)
-
-        self.root.configure(menu = menu_bar)
-
-    
-
-    def draw_widgets(self):
-        self.image_tabs.pack(fill="both", expand=1)
-
-    def select_images(self):
-        img_paths = fd.askopenfilenames(filetypes=(('Images', '*.jpeg;*.jpg;*.png'), ))
-        for i in img_paths:
-            self.add_new_img(i)
 
 
-    def add_new_img(self, img_path):
-        img = Image.open(img_path)
-        img_tk = ImageTk.PhotoImage(img)
-        self.opened_images.append([img_path, img])
-        img_tab = Frame(self.image_tabs)
-        img_label = Label(img_tab, image=img_tk)
-        img_label.image = img_tk
-        img_label.pack(side='bottom', fill='both', expand='yes')
 
-        self.image_tabs.add(img_tab,text=img_path.split('/')[-1])
-        self.image_tabs.select(img_tab)
+    def buttons(self):
+        bw_filter = Button(self.root, width=18, height=5, text="Apply a BW filter", command=self.bw_filter_command)
+        rotate_right = Button(self.root, width=18, height=5, text="Rotate image right", command=self.rotate_right_command)
+        rotate_left = Button(self.root, width=18, height=5, text="Rotate image left")
+        bw_filter.grid(row=0,column=0)
+        rotate_right.grid(row=0,column=2)
+        rotate_left.grid(row=0,column=3)
+
+
+    def bw_filter_command(self):
+        os.mkdir(f"bw filter {str(self.count_bw)}")
+        folder_name = (f'bw filter {str(self.count_bw)}'+'/{}_bw{}')
+        
+        for i in os.listdir():
+            img_n, img_ext = os.path.splitext(i)
+            if img_ext in ['.jpg', '.png', ".jpeg", ".jfif", ".gif", ".webp"]:
+                img = Image.open(i)
+                new_img = img.convert('L')
+                new_img.save(folder_name.format(img_n, img_ext))
+        print(folder_name)
+        self.count_bw += 1
+        mb.showinfo(title="Black/White filter", message="Done! Don't close the program window, just check the folder ")
+
+
+    def rotate_right_command(self):
+        os.mkdir(f"rotate right {str(self.count_r)}")
+        folder_name = (f'rotate right {str(self.count_r)}'+'/{}_right{}')
+        
+        for i in os.listdir():
+            img_n, img_ext = os.path.splitext(i)
+            if img_ext in ['.jpg', '.png', ".jpeg", ".jfif", ".gif", ".webp"]:
+                img = Image.open(i)
+                new_img = img.rotate(angle=90, expand=True)
+                new_img.save(folder_name.format(img_n, img_ext))
+        print(folder_name)
+        self.count_r += 1
+        mb.showinfo(title="Rotate right", message="Done! Don't close the program window, just check the folder ")
+
+
+
+
+
 
     def close(self, event = None):
         self.root.quit()
 
 
-    def save_as(self):
-        current_tab = self.image_tabs.select()
-        if not current_tab:
-            return
-        tab_number = self.image_tabs.index(current_tab) 
-
-        old_path, old_ext = os.path.splitext(self.opened_images[tab_number][0])
-        new_path = fd.asksaveasfilename(initialdir=old_path, filetypes=(('Images', '*.jpeg;*.jpg;*.png'), ))
-
-        if not new_path:
-            return
-
-        new_path, new_ext = os.path.splitext(new_path)
-
-
-        if not new_ext:
-            new_ext = old_ext
-        elif new_ext != old_ext:
-            mb.showerror('Incorrect extention', f'This iincorrect extention "{new_ext}", old was "{old_ext}"')
-
-        image = self.opened_images[tab_number][1]
-        image.save(new_path + new_ext)
-        image.close()
-
-        del self.opened_images[tab_number]
-        self.image_tabs.forget(current_tab)
-
-        self.add_new_img(new_path + new_ext)
 
 
 
