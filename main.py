@@ -36,9 +36,11 @@ class CapybaraPhoto:
         bw_filter = Button(self.root, width=18, height=5, text="Apply a BW filter", command=self.bw_filter_command)
         rotate_right = Button(self.root, width=18, height=5, text="Rotate image right", command=self.rotate_right_command)
         rotate_left = Button(self.root, width=18, height=5, text="Rotate image left", command=self.rotate_left_command)
+        upside = Button(self.root, width=18, height=5, text="Upside image", command=self.upside_command)
         bw_filter.grid(row=0,column=0)
         rotate_right.grid(row=0,column=2)
         rotate_left.grid(row=0,column=3)
+        upside.grid(row=2,column=0)
 
 
     def bw_filter_command(self):
@@ -91,6 +93,21 @@ class CapybaraPhoto:
         print(folder_name)
         self.count_r += 1
         mb.showinfo(title="Rotate left", message="Done! Don't close the program window, just check the folder ")
+
+
+    def upside_command(self):
+        os.mkdir(f"upside {str(self.count_r)}")
+        folder_name = (f'upside {str(self.count_r)}'+'/{}_upside{}')
+        
+        for i in os.listdir():
+            img_n, img_ext = os.path.splitext(i)
+            if img_ext in ['.jpg', '.png', ".jpeg", ".jfif", ".gif", ".webp"]:
+                img = Image.open(i)
+                new_img = img.rotate(angle=180, expand=True)
+                new_img.save(folder_name.format(img_n, img_ext))
+        print(folder_name)
+        self.count_r += 1
+        mb.showinfo(title="Upside image", message="Done! Don't close the program window, just check the folder ")
 
 
 
