@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox as mb
 from tkinter.ttk import Notebook
+from PIL import Image
 import os
 
 '''abs_path = os.path.abspath(__file__)
