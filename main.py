@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox as mb
 from tkinter.ttk import Notebook
-from PIL import Image, ImageTk
 import os
 
 '''abs_path = os.path.abspath(__file__)
@@ -31,11 +30,11 @@ class CapybaraPhoto:
         self.root.mainloop()
 
 
-
+    #Creating buttons and setting commands
     def buttons(self):
         bw_filter = Button(self.root, width=18, height=5, text="Apply a BW filter", command=self.bw_filter_command)
         rotate_right = Button(self.root, width=18, height=5, text="Rotate image right", command=self.rotate_right_command)
-        rotate_left = Button(self.root, width=18, height=5, text="Rotate image left")
+        rotate_left = Button(self.root, width=18, height=5, text="Rotate image left", command=self.rotate_left_command)
         bw_filter.grid(row=0,column=0)
         rotate_right.grid(row=0,column=2)
         rotate_left.grid(row=0,column=3)
@@ -56,9 +55,31 @@ class CapybaraPhoto:
         mb.showinfo(title="Black/White filter", message="Done! Don't close the program window, just check the folder ")
 
 
+    
     def rotate_right_command(self):
+        #There is I created new folder
         os.mkdir(f"rotate right {str(self.count_r)}")
         folder_name = (f'rotate right {str(self.count_r)}'+'/{}_right{}')
+        
+        for i in os.listdir():
+            img_n, img_ext = os.path.splitext(i)
+            if img_ext in ['.jpg', '.png', ".jpeg", ".jfif", ".gif", ".webp"]:
+                img = Image.open(i)
+
+                #There you can change the angle if you want
+                new_img = img.rotate(angle=-90, expand=True)
+
+                new_img.save(folder_name.format(img_n, img_ext))
+        print(folder_name)
+        self.count_r += 1
+        mb.showinfo(title="Rotate right", message="Done! Don't close the program window, just check the folder ")
+
+    
+    
+    #Same command as above but another angle
+    def rotate_left_command(self):
+        os.mkdir(f"rotate left {str(self.count_r)}")
+        folder_name = (f'rotate left {str(self.count_r)}'+'/{}_left{}')
         
         for i in os.listdir():
             img_n, img_ext = os.path.splitext(i)
@@ -68,7 +89,7 @@ class CapybaraPhoto:
                 new_img.save(folder_name.format(img_n, img_ext))
         print(folder_name)
         self.count_r += 1
-        mb.showinfo(title="Rotate right", message="Done! Don't close the program window, just check the folder ")
+        mb.showinfo(title="Rotate left", message="Done! Don't close the program window, just check the folder ")
 
 
 
