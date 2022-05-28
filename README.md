@@ -1,7 +1,8 @@
 # Final exam project COM 21a
 
-Сode with GUI that batch edits all images in a folder
+Before use please read full text there
 
+While using this program PLEASE PAY ATTENTION TO POP-UPS!!!
 
 
 Instructions to use program:
@@ -11,8 +12,18 @@ Instructions to use program:
 4. run "main.py" (to run code you have to download Tkinter and pillow libary)
 
 
+Modified images will be saved in the created folder
 
-There are several commented instructions and descriptions in the code 
+This code: 
+1. applies b/w filter
+2. rotates image (right and left but you can change angle in the code) 
+3. flip image upside down
+4. mirrors the image
+
+
+
+
+There are several commented descriptions in the code 
 
 
 Please give a high rating (＠_＠;)
