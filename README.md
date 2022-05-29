@@ -1,4 +1,5 @@
 # Final exam project COM 21a
+This code is completely made by Kasamaliev Sardar
 
 Before use please read full text there
 
