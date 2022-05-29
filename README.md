@@ -20,6 +20,7 @@ This code:
 2. rotates image (right and left but you can change angle in the code) 
 3. flip image upside down
 4. mirrors the image
+5. applied negative filter
 
 
 
