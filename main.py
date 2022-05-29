@@ -7,8 +7,12 @@ from PIL import Image, ImageOps
 import os
 
 
-'''abs_path = os.path.abspath(__file__)
-path = abs_path[:-7] + f"bw_filter_{str(self.count_bw)}"'''
+'''Instructions to use program if you didn't read readme:
+
+download
+move file named "main.py" to folder with images that you want to edit
+open via code editor the folder, where you moved the file "main.py"
+run "main.py" (to run code you have to download Tkinter and pillow libary)"'''
 
 
 class CapybaraPhoto:
