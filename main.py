@@ -1,14 +1,16 @@
 from tkinter import *
 from tkinter import messagebox as mb
 from tkinter.ttk import Notebook
+from turtle import xcor
 
 from PIL import Image, ImageOps
 
 import os
 
 
-'''Instructions to use program if you didn't read readme:
 
+
+'''Instructions to use program if you didn't read readme:
 download
 move file named "main.py" to folder with images that you want to edit
 open via code editor the folder, where you moved the file "main.py"
@@ -19,7 +21,11 @@ class CapybaraPhoto:
     def __init__(self):
         self.root = Tk()
         self.label = Label(self.root, text="Choose a Button")
+        self.copyrights = Label(self.root,  text="This project made by Ala too intternational university student")
         self.label.grid(row=0,column=0)
+        self.copyrights.place(relx = 0.0,
+            rely = 1.0,
+            anchor ='sw')
         self.image_tabs = Notebook(self.root)
         self.count_bw = 1
         self.count_r = 1
@@ -32,7 +38,6 @@ class CapybaraPhoto:
 
     def init(self):
         self.root.geometry('400x400')
-        
         # you can change title name here 
         self.root.title('Capybara Photo Editor')
         self.root.bind("<Escape>", self.close)
