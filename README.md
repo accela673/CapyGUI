@@ -29,3 +29,8 @@ There are several commented descriptions in the code
 
 
 Please give a high rating (＠_＠;)
+![first](https://user-images.githubusercontent.com/101983496/171905361-f114eab8-00f6-4fba-9124-3c905af12cda.png)
+![second](https://user-images.githubusercontent.com/101983496/171905402-894601a8-4358-411c-814d-36dba6d72489.png)
+![third](https://user-images.githubusercontent.com/101983496/171905415-2cc1c07f-7a4f-4d47-9302-657f932b3623.png)
+![fourth](https://user-images.githubusercontent.com/101983496/171905426-38561989-90f0-471d-ae78-58622a096ea7.png)
+![fifth](https://user-images.githubusercontent.com/101983496/171905437-3dfe0e58-2cae-4b39-aa4c-b34a1f52b587.png)
